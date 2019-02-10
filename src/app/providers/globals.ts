@@ -52,3 +52,13 @@ export const offersData = Object.freeze({
     {id: 6, title: 'We help you compare credit cards.', message: 'Finding a better credit card shouldn\'t be a daunting task. That\'s why we put ease of use, speed, fairness, and transparency at the very core of what we do.', image:'/assets/img/offers_6.png'},
   ]
 });
+
+export const howItWorksData = Object.freeze({
+  count: 4,
+  data: [
+    {id: 1, title: 'Enter a few details & grab your credit score, instantly, for free.', message: 'We collect a few details to verify your ID (which keeps our service safe, secure & simple) and you’re ready to go. No bank or credit cards needed—you can keep those in your wallet as you’ll never pay a cent.', image:'/assets/img/id-card.svg'},
+    {id: 2, title: 'Tell us what you’re after & we’ll focus on just that.', message: 'Our service is more than just a tool to access important data. It’s designed to be tailored to your situation. We recognise your needs are unique, and we want to dive deep so you have the best shot at achieving your financial goals while getting the most from your money.', image:'/assets/img/chat.svg'},
+    {id: 3, title: 'Check out what’s on offer, save & improve your credit score.', message: 'Whether you’re shopping for a loan, credit, or preparing for future applications, we can help you polish up your credit score for success. Let us keep you updated on important matters and changes to credit scoring in Australia and teach you everything we know.', image:'/assets/img/piggy-bank.svg'},
+    {id: 4, title: 'Everyone wins.', message: 'You learn how to improve your credit score & save money. If an awesome deal catches your eye, grab it right away. When you sign up on our site, we receive a small fee from the lender, and they get a new customer—all while you save.', image:'/assets/img/handshake.svg'},
+  ]
+});

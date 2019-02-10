@@ -1,7 +1,32 @@
 <ion-content>
   <app-header [title]='title'></app-header>
   <div class="content">
-    
+    <p class="subtitle">Here’s our process, broken down bit by bit:</p>
+    <ion-grid>
+      <ion-row class="border" *ngFor="let item of data['data']">
+        <ng-container
+          *ngIf="item.id % 2 != 0; then odd; else even">
+        </ng-container>
+        <ng-template #odd>
+          <ion-col>
+            <img src="{{ item.image }}">
+          </ion-col>
+          <ion-col>
+            <p class="title">{{ item.title }}</p>
+            <p>{{ item.message }}</p>
+          </ion-col>
+        </ng-template>
+        <ng-template #even>
+          <ion-col>
+            <p class="title">{{ item.title }}</p>
+            <p>{{ item.message }}</p>
+          </ion-col>
+          <ion-col>
+            <img src="{{ item.image }}">
+          </ion-col>
+        </ng-template>
+      </ion-row>
+    </ion-grid>
   </div>
   <app-footer></app-footer>
 </ion-content>

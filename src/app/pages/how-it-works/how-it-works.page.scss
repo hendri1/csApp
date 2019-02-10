@@ -2,9 +2,36 @@
 @import '../../../assets/scss/variable.scss';
 
 ion-content {
-  background: #FAFAFA;
+  background: $white;
 
   .content {
-    
+    margin-bottom: 60px;
+    padding: 10px;
+
+    .subtitle, p {
+      font-family: 'Rubik-Regular';
+      font-size: $normal-font-size;
+    }
+
+    .subtitle {
+      text-align: center;
+    }
+
+    .border {
+      border-bottom: 3px solid #CCC;
+
+      &:last-child {
+        border: none;  
+      }
+    }
+
+    ion-col {
+
+      .title {
+        font-family: 'Rubik-Bold';
+        font-weight: bold;
+        font-size: $normal-font-size;
+      }
+    }
   }
 }
