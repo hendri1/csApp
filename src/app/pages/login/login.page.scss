@@ -1,0 +1,154 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+@media (orientation: portrait) {
+  ion-content {
+
+    .login-logo {
+      top: 50%;
+    }
+  
+    .login-box {
+      background: $white;
+      box-shadow: 0 13px 16px 0 rgba(0,0,0,.05);
+      margin-bottom: 32px;
+      border-radius: 2px;
+    }
+    
+    .login-form {
+      top: -74px;
+
+      button {
+        margin-bottom: 30px;
+      }
+    }
+
+    .footer {
+      position: absolute;
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  ion-content {
+  
+    .login-logo {
+      top: 15%;
+    }
+    
+    .login-form {
+      top: -300px;
+  
+      button {
+        margin-bottom: 100px;
+      }
+    }
+
+    .footer {
+      position: relative;
+    }
+  }
+}
+
+ion-content {
+  background: $white;
+  color: $black;
+
+  .text-center {
+    text-align: center;
+  }
+  
+  a {
+    font-family: 'Rubik-Light';
+    font-size: $normal-font-size;
+  }
+
+  .invalid-label {
+    color: $danger-color;
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .login-logo {
+    text-align:center;
+    margin-bottom: 32px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .login-box {
+    background: $white;
+    box-shadow: 0 13px 16px 0 rgba(0,0,0,.05);
+    margin-bottom: 32px;
+    border-radius: 2px;
+  }
+
+  .login-form {
+    position: relative;
+
+    ion-input {
+      line-height: 60px;
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      padding: 10px !important;
+      border-bottom: 1px solid #D8D8D8;
+
+      &.invalid {
+        border-color: $danger-color;
+      }
+
+      &.email {
+        background-image: url('/assets/img/icon-mail.svg');
+        font-family: 'Rubik-Light';
+        font-size: 15px;
+      }
+  
+      &.password {
+        background-image: url('/assets/img/icon-password.svg');
+        font-family: 'Rubik-Light';
+        font-size: 15px;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: $secondary-color;
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 12px 28px rgba(255,160,0,.31);
+      font-family: 'Rubik-Regular';
+      font-size: 16px;
+  
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .forgot-password {
+    color: $black;
+  }
+
+  .footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    text-align:center;
+    color: #818181;
+    font-family: 'Rubik-Light';
+    font-size: 13px;
+
+    a {
+      color: #818181;
+      font-family: 'Rubik-Medium';
+    }
+  }
+}

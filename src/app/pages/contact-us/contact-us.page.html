@@ -1,0 +1,50 @@
+<ion-content>
+  <app-header [title]='title'></app-header>
+  <div class="content">
+    <ion-grid>
+      <ion-row class="info">
+        <ion-col>
+          <p class="title">Oh, hello. Thanks for stopping by.</p>
+          <p class="subtitle">Enquiries? Just saying hi? We'd love to hear from you.</p>
+          <p>If you have questions, feedback, proposals, or free food, get in touch. Sharing is caring.</p>
+          <p>
+            <ion-icon name="checkmark"></ion-icon>
+            We work, eat and create at:
+            <br>
+            724-728 George Street, Sydney, NSW, 2000
+          </p>
+          <p>
+            <ion-icon name="checkmark"></ion-icon>
+            If you'd like to get in touch, fill out the form on the right and we'll respond as soon as we can.
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="form">
+        <form [formGroup]="data" (ngSubmit)="contactUs(data.value, data.valid)">
+          <ion-col>
+            <div class="form-group">
+              <label for="full-name">Full Name <span class="red">*</span></label>
+              <input type="text" placeholder="Your Name" id="full-name" formControlName="name" [ngClass]="{'form-control': true, 'invalid': (!data.controls.name.valid && data.controls.name.touched) || (submitted && !data.controls.name.valid) }" (focusout)="checkValue(data.controls.name.valid)">
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="red">*</span></label>
+              <input type="text" placeholder="youremail@mail.com" id="email" formControlName="email" [ngClass]="{'form-control': true, 'invalid': (!data.controls.email.valid && data.controls.email.touched) || (submitted && !data.controls.email.valid) }" (focusout)="checkValue(data.controls.email.valid)">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject <span class="red">*</span></label>
+              <input type="text" placeholder="Your Subject" id="subject" formControlName="subject" [ngClass]="{'form-control': true, 'invalid': (!data.controls.subject.valid && data.controls.subject.touched) || (submitted && !data.controls.subject.valid) }" (focusout)="checkValue(data.controls.subject.valid)">
+            </div>
+            <div class="form-group">
+              <label for="messages">Message <span class="red">*</span></label>
+              <textarea placeholder="Your Message" id="messages" formControlName="messages" [ngClass]="{'form-control': true, 'invalid': (!data.controls.messages.valid && data.controls.messages.touched) || (submitted && !data.controls.messages.valid) }" (focusout)="checkValue(data.controls.messages.valid)"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" [disabled]="!isValid">Submit</button>
+            </div>
+          </ion-col>
+        </form>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

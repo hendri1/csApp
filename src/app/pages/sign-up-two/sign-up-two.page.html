@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="position-relative">
+    <img src="/assets/img/signup-bg.jpg" alt="">
+    <div class="signup-logo">
+      <img src="/assets/img/logo-big.svg" alt="">
+    </div>
+  </div>
+
+  <div class="signup-form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="signup-box">
+            <div id="navigate-wrapper">
+              <ion-item>
+                <button class="navigate-button" ion-button block color="secondary" (click)="registerOne()">1</button>
+                <button class="navigate-button active" ion-button block color="secondary">2</button>
+                <button class="navigate-button" ion-button block color="secondary" (click)="registerThree()">3</button>
+              </ion-item>
+            </div>
+            <form [formGroup]="user" (ngSubmit)="registerThree(user.value, user.valid)">
+              <div id="form-wrapper">
+                <div class="form-group">
+                  <label for="current-address">Your Current Address <span class="red">*</span> <span class="fr"><ion-icon name="alert" (click)="infoAddress()"></ion-icon></span></label>
+                  <input type="text" placeholder="Enter your full name" id="current-address" formControlName="address" [ngClass]="{'form-control': true, 'invalid': (!user.controls.address.valid && user.controls.address.touched) || (submitted && !user.controls.address.valid) }" (focusout)="checkValue(user.controls.address.valid)">
+                </div>
+                <div class="form-group">
+                  <label for="mobile-number">Mobile Number <span class="red">*</span></label>
+                  <input type="text" placeholder="e.g. 049209394" id="mobile-number" formControlName="mobile_number" [ngClass]="{'form-control': true, 'invalid': (!user.controls.mobile_number.valid && user.controls.mobile_number.touched) || (submitted && !user.controls.mobile_number.valid) }" (focusout)="checkValue(user.controls.mobile_number.valid)">
+                  <small class="fr"><ion-icon name="alert" (click)="infoPhone()"></ion-icon> Why do I need to provide this?</small>
+                </div>
+                <div class="form-group">
+                  <label for="driver-license">Driver License Number <span class="red">*</span></label>
+                  <input type="text" placeholder="e.g. 049209394" id="driver-license" formControlName="driver_license_number" [ngClass]="{'form-control': true, 'invalid': (!user.controls.driver_license_number.valid && user.controls.driver_license_number.touched) || (submitted && !user.controls.driver_license_number.valid) }" (focusout)="checkValue(user.controls.driver_license_number.valid)">
+                </div>
+                <div class="form-group">
+                  <button class="next-button" type="submit" [disabled]="!isValid">Next</button>
+                  <button class="back-button" ion-button block (click)="registerOne()">Back</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="footer">
+    Already have an account? <a (click)="navigate('login')"><strong>Sign In.</strong></a>
+  </div>
+</ion-content>

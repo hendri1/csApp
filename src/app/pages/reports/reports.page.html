@@ -1,0 +1,111 @@
+<ion-content>
+  <app-header [title]='title'></app-header>
+  <div class="content">
+    <div id="history">
+      <fusioncharts 
+        width="100%" 
+        height="130" 
+        type="hlineargauge" 
+        [dataSource]="linearGauge">
+      </fusioncharts>
+      <p class="title">Credit Report Summary</p>
+    </div>
+    <div id="personal_information">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              PERSONAL INFORMATION
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel-content">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <p class="bold">Full name</p>
+                  <p>Full name</p>
+                </ion-col>
+                <ion-col>
+                  <p class="bold">Other name</p>
+                  <p>Other name</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <p class="bold">Date of Birth</p>
+                  <p>18/03/1973</p>
+                </ion-col>
+                <ion-col>
+                  <p class="bold">Driver's Licence</p>
+                  <p>21568848089800</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <p class="bold">Employer</p>
+                  <p>Alternative Media</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <p class="bold">Known Addresses</p>
+                  <p>
+                    43 Port Hacking Rd, Caringbah QLD 2467
+                    <br>
+                    80 A Wyralla Road, Miranda QLD 2469
+                  </p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <p class="small">First reported: 01-08-2015 Last reported: 01-09-2017</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CONSUMER CREDIT HISTORY
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel-content">
+            <p>I'm visible because I am open</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              COMMERCIAL CREDIT HISTORY
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel-content">
+            <p>I'm visible because I am open</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CREDIT ACCOUNTS AND RELATIONSHIPS
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel-content">
+            <p>I'm visible because I am open</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              PUBLIC INFORMATION
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel-content">
+            <p>I'm visible because I am open</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+  <app-footer [menuSelected]='menuSelected'></app-footer>
+</ion-content>

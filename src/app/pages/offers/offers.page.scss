@@ -1,0 +1,31 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+ion-content {
+  background: #FAFAFA;
+
+  .content {
+    margin-bottom: 60px;
+    
+    ion-card {
+
+      ion-card-content {
+
+        ion-card-title {
+          font-size: 18px;
+          font-family: 'Rubik-Medium';
+        }
+
+        p {
+          font-size: 13px;
+          font-family: 'Rubik-Regular';
+        }
+
+        ion-button {
+          --ion-color-primary: #FFA000;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

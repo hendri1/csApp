@@ -1,0 +1,34 @@
+<ion-content>
+  <app-header [title]='title'></app-header>
+  <div class="content">
+    <div id="history">
+      <fusioncharts
+        width="100%" 
+        height="130" 
+        type="hlineargauge" 
+        [dataSource]="linearGauge">
+      </fusioncharts> 
+      <p class="title">See how your score stacks up</p>
+      <p class="subtitle">You're <span>in the top 20%</span>, Good Work!</p>
+    </div>
+    <ion-card>
+      <ion-card-header>
+        <ion-select placeholder="Select Period">
+          <ion-select-option>3 Months</ion-select-option>
+          <ion-select-option>6 Months</ion-select-option>
+          <ion-select-option>12 Months</ion-select-option>
+        </ion-select>
+      </ion-card-header>
+      <ion-card-content>
+        <fusioncharts
+            width="100%"
+            height="300"
+            type="line"
+            [dataSource]="lineChart">
+        </fusioncharts>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <app-footer [menuSelected]='menuSelected'></app-footer>
+</ion-content>
+  

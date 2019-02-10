@@ -1,0 +1,123 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+@media (orientation: portrait) {
+  ion-content {
+    .logo {
+      text-align: center;
+      margin-top: 10vh;
+    }
+
+    .login-button {
+      float: right;
+    
+      a {
+        color: $white;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: 'Rubik-Regular';
+      }
+    
+      img {
+        margin-left: 10px;
+      }
+    }
+
+    ion-slides {
+
+      ion-grid {
+        margin-bottom: 20%;
+      }
+    }
+      
+    .slides {
+    
+      .slide-thumbnail {
+        padding: 20px;
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        margin: 0 auto;
+        text-align: center;
+    
+        img {
+          width: 100%;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  ion-content {
+
+    .login-button {
+      float: right;
+    
+      a {
+        color: $white;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: 'Rubik-Regular';
+      }
+    
+      img {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+ion-content {
+  background: url('/assets/img/Bg_1.png');
+  background-position: center center;
+  background-size: cover !important;
+
+  h1, p {
+    color: $white;
+  }
+
+  h1 {
+    font-family: 'Rubik-Medium';
+    font-size: $title-font-size;
+    margin: 0px;
+  }
+
+  p {
+    font-family: 'Rubik-Regular';
+    font-size: $normal-font-size;
+  }
+
+  .button-ios-light, .button-md-light {
+    color: $black !important;
+  }
+
+  ion-slides {
+    --bullet-background: #FFF;
+    --bullet-background-active: #FFF;
+  }
+
+  .footer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  
+    .line {
+      border: 1px solid $white;
+    }
+  
+    .score-button {
+      text-align: center;
+      padding: 20px;
+    
+      a {
+        color: $white;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: 'Rubik-Medium';
+      }
+    }
+  }
+}

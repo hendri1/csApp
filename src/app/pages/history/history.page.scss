@@ -1,0 +1,48 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+ion-content {
+  
+  .content {
+    margin-bottom: 60px;
+
+    #history {
+      background-image: url('/assets/img/login-bg.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 250px;
+  
+      .title,
+      .subtitle {
+        position: relative;
+        top: -100px;
+        color: $white;
+        text-align: center;
+        margin: 10px;
+      }
+
+      .title {
+        font-family: 'Rubik-Regular';
+        font-size: $title-font-size;
+      }
+
+      .subtitle {
+        font-family: 'Rubik-Italic';
+        font-size: $normal-font-size;
+        font-style: italic;
+
+        span {
+          color: $secondary-color;
+        }
+      }
+    }
+
+    ion-card {
+      box-shadow: none;
+
+      ion-select {
+        background: $white;
+      }
+    }
+  }  
+}

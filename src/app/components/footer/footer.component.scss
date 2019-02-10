@@ -1,0 +1,23 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  background: $white;
+  z-index: 99999;
+
+  button {
+    background: none;
+    border: none;
+    color: $primary-color;
+    font-size: 25px;
+    padding: 10px 20px;
+
+    &.active {
+      color: $secondary-color;
+    }
+  }
+}

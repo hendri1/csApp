@@ -1,0 +1,8 @@
+{
+  "name": "csApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "e7046574"
+}

@@ -1,0 +1,14 @@
+<ion-content>
+  <app-header [title]='title' [isDashboardHelp]='true'></app-header>
+  <div class="content">
+    <ion-card *ngFor="let item of data['data']">
+      <ion-card-header>
+        <ion-card-title>{{ item.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label [innerHTML]="item.message | htmlEscapePipe"></ion-label>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <app-footer [menuSelected]='menuSelected'></app-footer>
+</ion-content>

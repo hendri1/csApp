@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="position-relative">
+    <img src="/assets/img/signup-bg.jpg" alt="">
+    <div class="signup-logo">
+      <img src="/assets/img/logo-big.svg" alt="">
+    </div>
+  </div>
+  <div class="signup-form">
+    <ion-grid>
+      <form [formGroup]="user" (ngSubmit)="register(user.value, user.valid)">
+        <ion-row align-items-center>
+          <ion-col>
+            <p id="title" class="text-center">Let's start with your email</p>
+            <p id="subtitle" class="text-center">Your email address will be your CreditSpring username, so please make sure you enter it correctly.</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input type="email" placeholder="Email" formControlName="email" [ngClass]="{'email': true, 'invalid': (!user.controls.email.valid && user.controls.email.touched) || (submitted && !user.controls.email.valid) }" (focusout)="checkValue(user.controls.email.valid)"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button class="register-button" type="submit" [disabled]="!isValid">Yes, that's my email</button>              
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row>
+        <ion-col class="text-center">
+          <ion-label class="register-label">REGISTER WITH SOCIAL MEDIA</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button class="register-fb" ion-button block (click)="registerFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <p>Sign up with Facebook</p>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button class="register-google" ion-button block (click)="registerGoogle()">
+            <ion-icon name="logo-google"></ion-icon>
+            <p>Sign up with Google+</p>
+          </button>              
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="footer">
+    Already have an account? <a (click)="navigate('login')"><strong>Sign In.</strong></a>
+  </div>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="position-relative">
+    <img src="/assets/img/signup-bg.jpg" alt="">
+    <div class="signup-logo">
+      <img src="/assets/img/logo-big.svg" alt="">
+    </div>
+  </div>
+
+  <div class="signup-form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="signup-box">
+            <div id="navigate-wrapper">
+              <ion-item>
+                <button class="navigate-button active" ion-button block color="secondary">1</button>
+                <button class="navigate-button" ion-button block color="secondary" (click)="registerTwo()">2</button>
+                <button class="navigate-button" ion-button block color="secondary" (click)="registerThree()">3</button>
+              </ion-item>
+            </div>
+            <div id="intro-wrapper">
+              <ion-row>
+                <ion-col>
+                  <p class="text-center">You’re just four simple steps away from your free score and report. Let's start by creating your CreditSpring account.</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <button class="go-button" ion-button block color="secondary" (click)="register()">Let's Go</button>
+                </ion-col>
+                <ion-col>
+                  <button class="tell-button" ion-button block color="secondary" (click)="register()">Tell me a bit more</button>
+                </ion-col>
+              </ion-row>
+            </div>
+            <form [formGroup]="user" (ngSubmit)="registerTwo(user.value, user.valid)">
+              <div id="form-wrapper">
+                <div class="form-group">
+                  <label for="full-name">Full Name <span class="red">*</span> <span class="suffix"> (including middle names)</span></label>
+                  <input type="text" placeholder="Enter your full name" id="full-name" formControlName="full_name" [ngClass]="{'form-control': true, 'invalid': (!user.controls.full_name.valid && user.controls.full_name.touched) || (submitted && !user.controls.full_name.valid) }" (focusout)="checkValue(user.controls.full_name.valid)">
+                </div>
+                <div class="form-group">
+                  <label for="email-address">Email Address <span class="red">*</span></label>
+                  <input type="email" placeholder="Enter your email address" id="email-address" formControlName="email"  [ngClass]="{'form-control': true, 'invalid': (!user.controls.email.valid && user.controls.email.touched) || (submitted && !user.controls.email.valid) }" (focusout)="checkValue(user.controls.email.valid)">
+                  <small class="fr"><ion-icon name="alert" (click)="infoEmail()"></ion-icon> Why do I need to provide this?</small>
+                </div>
+                <div class="form-group">
+                  <label for="date-of-birth">Date of Birth <span class="red">*</span></label>
+                  <input type="date" placeholder="dd/mm/yyyy" id="date-of-birth" formControlName="dob" [ngClass]="{'form-control': true, 'invalid': (!user.controls.dob.valid && user.controls.dob.touched) || (submitted && !user.controls.dob.valid) }" (focusout)="checkValue(user.controls.dob.valid)">
+                </div>
+                <div class="form-group">
+                  <button class="register-button" type="submit" [disabled]="!isValid">Next</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="footer">
+    Already have an account? <a (click)="navigate('login')"><strong>Sign In.</strong></a>
+  </div>
+</ion-content>

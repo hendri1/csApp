@@ -1,0 +1,80 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+ion-content {
+  background: #FAFAFA;
+
+  .content {
+    margin-bottom: 60px;
+
+    #history {
+      background-image: url('/assets/img/login-bg.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 250px;
+  
+      .title,
+      .subtitle {
+        position: relative;
+        top: -100px;
+        color: $white;
+        text-align: center;
+        margin: 10px;
+      }
+
+      .title {
+        font-family: 'Rubik-Regular';
+        font-size: $title-font-size;
+      }
+
+      .subtitle {
+        font-family: 'Rubik-Italic';
+        font-size: $normal-font-size;
+        font-style: italic;
+
+        span {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  #personal_information {
+    position: relative;
+    z-index: 9999;
+
+    mat-accordion {
+      mat-expansion-panel {
+        mat-expansion-panel-header {
+          border-top: 1px solid #CCC;
+
+          mat-panel-title {
+            font-size: 13px;
+            font-family: 'Rubik-Medium';
+            font-weight: bold;
+          }
+        }
+      }
+
+      .panel-content {
+        p {
+          font-size: 13px;
+          font-family: 'Rubik-Regular';
+          color: #767676;
+
+          &.bold {
+            color: $black;
+            font-weight: bold;
+            font-family: 'Rubik-Medium';
+          }
+
+          &.small {
+            color: #BABABA;
+            font-size: $smaller-font-size;
+            font-family: 'Rubik-Light';
+          }
+        }
+      }
+    }
+  }
+}

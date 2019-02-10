@@ -1,0 +1,117 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+ion-content {
+  background: #FAFAFA;
+
+  .content {
+    margin-bottom: 60px;
+
+    .info {
+
+      p {
+        font-family: 'Rubik-Regular';
+        font-size: $normal-font-size;
+
+        ion-icon {
+          color: $primary-color;
+        }
+      }
+
+      .title {
+        font-family: 'Rubik-Bold';
+        font-size: $title-font-size;
+        font-weight: bold;
+      }
+
+      .subtitle {
+        font-family: 'Rubik-Bold';
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+
+    .form {
+      position: relative;
+      z-index: 9999;
+
+      form {
+        width: 100%;
+
+        .form-group {
+          margin: 25px 0px;
+    
+          label {
+            font-family: 'Rubik Regular';
+            font-size: $normal-font-size;
+          }
+    
+          .red {
+            color: #F00;
+            font-family: 'Rubik Regular';
+            font-size: $normal-font-size;
+          }
+    
+          .suffix, small {
+            color: #CCC;
+            font-family: 'Rubik Regular';
+            font-size: 11px;
+          }
+    
+          small {
+            color: $black;
+          }
+    
+          textarea {
+            height: 150px;
+          }
+    
+          .form-control {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: $white;
+            background-clip: padding-box;
+            border: 1px solid #CED4DA;
+            border-radius: .25rem;
+            font-family: 'Rubik Light';
+            font-size: $normal-font-size;
+            margin: 5px 0px;
+    
+            &:focus {
+              outline: none;
+            }
+    
+            &.invalid {
+              border-color: $danger-color;
+            }
+          }
+    
+          button {
+            width: 100%;
+            padding: 15px;
+            background: $secondary-color;
+            color: $white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Rubik-Regular';
+            font-size: 16px;
+      
+            &:disabled {
+              opacity: 0.8;
+              cursor: not-allowed;
+            }
+      
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+  }
+}

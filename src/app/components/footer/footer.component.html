@@ -1,0 +1,9 @@
+<div class="footer">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of menu['menu']">
+        <button [ngClass]="{'active': ( item['active_class'].indexOf(menuSelected) > -1 )}" (click)="navigate(item.link)"><ion-icon name="{{ item.icon }}"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

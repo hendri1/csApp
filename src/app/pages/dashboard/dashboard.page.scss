@@ -1,0 +1,92 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+ion-content {
+  background: #FAFAFA;
+
+  .content {
+    min-height: 480px;
+
+    .position-relative {
+      position: relative;
+    }
+
+    #user-container {
+      position: relative;
+      text-align: center;
+      top: -180px;
+
+      ion-label {
+        font-size: $normal-font-size;
+        font-family: 'Rubik-Light';
+        color: $white;
+  
+        strong {
+          font-family: 'Rubik-Medium';
+        }
+      }
+    }
+
+    #graph-container {
+      position: relative;
+      height: 200px;
+      top: -150px;
+      padding: 0px 10px;
+
+      .info {
+        position: relative;
+        top: -70px;
+        background: $white;
+        width: 200px;
+        height: 100px;
+        margin: auto;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 400px;
+        border-bottom-right-radius: 400px;
+
+        .label {
+          font-size: $normal-font-size;
+          font-family: 'Rubik-Light';
+          text-align: center;
+          background: $secondary-color;
+          color: $white;
+          border-radius: 10px;
+          width: 100px;
+          margin: auto;
+        }
+
+        p {
+          top: 0px;
+          margin: 2px;
+          font-size: $normal-font-size;
+          font-family: 'Rubik-Light';
+          color: #707070;
+
+          &.score {
+            font-family: 'Rubik-Bold';
+            font-size: $title-font-size;
+            font-weight: bold;
+            color: $black;
+          }
+
+          &.last-updated {
+            font-size: $smaller-font-size;
+          }
+        }
+      }
+    }
+
+    p {
+      position: relative;
+      top: -80px;
+      font-size: $normal-font-size;
+      font-family: 'Rubik-Light';
+      color: $black;
+      text-align: center;
+
+      strong {
+        font-family: 'Rubik-Medium';
+      }
+    }
+  }
+}

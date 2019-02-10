@@ -1,0 +1,33 @@
+<ion-content padding>
+  <div class="login-button">
+    <a (click)="navigate('login')">Login <img src="/assets/img/arrow-right.svg"></a>
+  </div>
+  <div class="logo">
+    <img src="/assets/img/Logo.svg">
+  </div>
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let slide of slides['slides']">
+      <ion-grid>
+        <ion-row align-items-center>
+          <ion-col>
+            <div class="slide-thumbnail">
+              <img src="{{ slide.image }}">
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row align-items-center>
+          <ion-col>
+            <h1>{{ slide.title }}</h1>
+            <p>{{ slide.message }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+  <div class="footer">
+    <div class="line"></div>
+    <div class="score-button">
+      <a (click)="navigate('login')">See my Score</a>
+    </div>
+  </div>
+</ion-content>

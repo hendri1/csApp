@@ -1,0 +1,47 @@
+<div class="header">
+  <mat-sidenav-container id="nav" class="example-container" (backdropClick)="closeMenu()">
+    <mat-sidenav #sidenav (keydown.escape)="closeMenu()" disableClose>
+      <div class="nav-container">
+        <ion-grid>
+          <ion-row align-items-center>
+            <ion-col>
+              <button class="icon-search"><ion-icon name="search"></ion-icon></button>
+              <ion-input id="search" type="text"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <button class="menu border">
+                <ion-icon name="person"></ion-icon>
+                <ion-label>Hi <strong>{{ username }}</strong></ion-label>
+              </button>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let item of menu['menu']">
+            <ion-col>
+              <button class="menu border" (click)="navigate(item.link)">
+                <ion-icon name="{{ item.icon }}"></ion-icon>
+                <ion-label>{{ item.title }}</ion-label>
+              </button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <button class="menu" (click)="logout()">
+                <ion-icon name="exit"></ion-icon>
+                <ion-label>Log out</ion-label>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <button id="back" (click)="navigate('dashboard')" *ngIf="isDashboardHelp"><ion-icon name="arrow-round-back"></ion-icon></button>
+      <button id="menu" (click)="openMenu()" *ngIf="!isDashboardHelp"><ion-icon name="menu"></ion-icon></button>
+      <p>{{ title }}</p>
+      <button id="help" (click)="navigate('dashboard-help')" *ngIf="isDashboard"><ion-icon name="help-circle-outline"></ion-icon></button>
+    </mat-sidenav-content>
+  </mat-sidenav-container>  
+</div>

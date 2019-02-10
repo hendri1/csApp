@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="position-relative">
+    <img src="/assets/img/signup-bg.jpg" alt="">
+    <div class="signup-logo">
+      <img src="/assets/img/logo-big.svg" alt="">
+    </div>
+  </div>
+
+  <div class="signup-form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="signup-box">
+            <div id="navigate-wrapper">
+              <ion-item>
+                <button class="navigate-button" ion-button block color="secondary" (click)="registerOne()">1</button>
+                <button class="navigate-button" ion-button block color="secondary">2</button>
+                <button class="navigate-button active" ion-button block color="secondary" (click)="registerThree()">3</button>
+              </ion-item>
+            </div>
+            <form [formGroup]="user" (ngSubmit)="register(user.value, user.valid)">
+              <div id="form-wrapper">
+                <div class="form-group">
+                  <label for="password">Select a password <span class="red">*</span></label>
+                  <input type="password" placeholder="Please enter your password" id="password" formControlName="password" [ngClass]="{'form-control': true, 'invalid': (!user.controls.password.valid && user.controls.password.touched) || (submitted && !user.controls.password.valid) }" (focusout)="checkValue(user.controls.password.valid)">
+                  <input type="password" placeholder="Please confirm your password" id="confirm_password" formControlName="confirm_password" [ngClass]="{'form-control': true, 'invalid': (!user.controls.confirm_password.valid && user.controls.confirm_password.touched) || (submitted && !user.controls.confirm_password.valid) }" (focusout)="checkValue(user.controls.confirm_password.valid)">
+                </div>
+                <div class="form-group">
+                  <button class="next-button" type="submit" [disabled]="!isValid">Get my credit score now</button>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" class="fl">
+                  <p>By ticking this checkbox, I authorise creditspring.com.au to obtain my credit score from Experian Australia. I acknowledge and accept creditspring.com.au's <a (click)="infoPP()">privacy policy</a> and <a (click)="infoTOE()">terms of use.</a></p>
+                  <p>I agree to be contacted by <a (click)="openWeb('https://creditspring.com.au')">creditspring.com.au</a> and their partners, Experian and their related entities, and for them to use and disclose my personal information for marketing and business purposes. I am aware I can opt out of direct marketing by any of the entities mentioned by contacting them at any time.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

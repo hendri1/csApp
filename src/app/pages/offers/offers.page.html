@@ -1,0 +1,16 @@
+<ion-content>
+  <app-header [title]='title'></app-header>
+  <div class="content">
+    <ion-card *ngFor="let item of offers['data']">
+      <img src="{{ item.image }}"/>
+      <ion-card-content>
+        <ion-card-title>{{ item.title }}</ion-card-title>
+        <p>{{ item.message }}</p>
+        <ion-button>Compare Now</ion-button>
+        <!-- <p padding-top><a ion-button href="https://healthinsurancecomparison.com.au/form/step1-choosewell/?utm_source=creditspring&utm_medium=display&utm_campaign=creditspringdash" full color="secondary">Compare Now</a></p> -->
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <app-footer [menuSelected]='menuSelected'></app-footer>
+</ion-content>
+  

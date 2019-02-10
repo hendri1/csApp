@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="position-relative">
+    <img src="/assets/img/login-bg.jpg">
+    <div class="login-logo">
+      <img src="/assets/img/logo-big.svg">
+    </div>
+  </div>
+  <div class="login-form">
+    <form [formGroup]="user" (ngSubmit)="login(user.value, user.valid)">
+      <ion-grid>
+        <ion-row align-items-center>
+          <ion-col>
+            <div class="login-box">
+              <ion-input type="email" placeholder="Email" formControlName="email" [ngClass]="{'email': true, 'invalid': (!user.controls.email.valid && user.controls.email.touched) || (submitted && !user.controls.email.valid) }" (focusout)="checkValue(user.controls.email.valid)"></ion-input>
+              <ion-input type="password" placeholder="Password" formControlName="password" [ngClass]="{'password': true, 'invalid': (!user.controls.password.valid && user.controls.password.touched) || (submitted && !user.controls.password.valid) }" (focusout)="checkValue(user.controls.password.valid)"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button type="submit" [disabled]="!isValid">LOGIN</button>              
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="text-center">
+            <a class="forgot-password" (click)="navigate('forgot-password')">Forgot Password?</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+  <div class="footer">
+    Don’t have an account? <a (click)="navigate('sign-up')"><strong>Sign Up.</strong></a>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+ion-tab-bar {
+  background-color: #FFF;
+}
+
+ion-content {
+  background: $white;
+
+  .content {
+    margin-bottom: 60px;
+    
+    ion-card {
+      box-shadow: none;
+  
+      ion-card-title {
+        color: $secondary-color;
+        padding: 10px 0px;
+        border-bottom: 1px solid #CCC;
+        font-size: $title-font-size;
+        font-family: 'Rubik-Medium';
+      }
+  
+      ion-card-content {
+        font-size: $normal-font-size;
+        font-family: 'Rubik-Light';
+      }
+    }
+  }
+}

@@ -1,0 +1,187 @@
+// variable 
+@import '../../../assets/scss/variable.scss';
+
+@media (orientation: portrait) {
+  ion-content {
+
+    .signup-logo {
+      top: 10%;
+    }
+
+    .signup-form {
+      top: -275px;
+    }
+
+    .footer {
+      position: absolute;
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  ion-content {
+  
+    .signup-logo {
+      top: 10%;
+    }
+    
+    .signup-form {
+      top: -550px;
+
+      button {
+        box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+
+        &.register-fb {
+          box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+        }
+
+        &.register-google {
+          box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+        }
+      }
+
+      .register-label {
+        color: $white;
+      }
+    }
+
+    .footer {
+      position: relative;
+    }
+  }
+}
+
+ion-content {
+  background: $white;
+  color: $black;
+
+  .text-center {
+    text-align: center;
+  }
+  
+  a {
+    font-family: 'Rubik-Light';
+    font-size: $normal-font-size;
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .signup-logo {
+    text-align:center;
+    margin-bottom: 32px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .signup-form {
+    position: relative;
+
+    #title {
+      font-family: 'Rubik-Medium';
+      font-size: 15px;
+      color: $white;
+    }
+
+    #subtitle {
+      font-family: 'Rubik-Light';
+      font-size: $small-font-size;
+      color: $white;
+    }
+
+    ion-input {
+      background: $white;
+      padding: 10px !important;
+
+      &.invalid {
+        border-bottom: 2px solid $danger-color;
+      }
+
+      &.email {
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        background-image: url('/assets/img/icon-mail.svg');
+        font-family: 'Rubik-Light';
+        font-size: 15px;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: $secondary-color;
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Rubik-Regular';
+      font-size: 16px;
+
+      &:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+      }
+
+      &.register-button {
+        margin-bottom: 50px;
+      }
+
+      &.register-fb, &.register-google {
+        font-size: $normal-font-size;
+      }
+
+      &.register-fb {
+        background-color: $third-background-color;
+
+        ion-icon {
+          float: left;
+          font-size: 30px;
+        }
+
+        p {
+          font-family: 'Rubik-Medium';
+          font-size: $normal-font-size;
+          margin: 8px;
+        }
+      }
+
+      &.register-google {
+        background-color: $danger-color;
+        
+        ion-icon {
+          float: left;
+          font-size: 30px;
+        }
+
+        p {
+          font-family: 'Rubik-Medium';
+          font-size: $normal-font-size;
+          margin: 8px;
+        }
+      }
+    }
+
+    .register-label {
+      font-family: 'Rubik-Regular';
+      font-size: $small-font-size;
+    }
+  }
+
+  .footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    text-align: center;
+    color: #818181;
+    font-family: 'Rubik-Light';
+    font-size: 13px;
+
+    a {
+      color: #818181;
+      font-family: 'Rubik-Medium';
+    }
+  }
+}
