@@ -1,7 +1,75 @@
 <ion-content>
   <app-header [title]='title'></app-header>
   <div class="content">
-    
+    <form [formGroup]="data" (ngSubmit)="save(data.value, data.valid)">
+      <ion-grid>
+        <ion-row class="info">
+          <h1 class="title">My Registered Details</h1>
+        </ion-row>
+        <ion-row class="form">
+          <ion-col>
+            <div class="form-group">
+              <input type="text" placeholder="Full Name" id="full-name" formControlName="fullname" [ngClass]="{'form-control': true, 'invalid': (!data.controls.fullname.valid && data.controls.fullname.touched) || (submitted && !data.controls.fullname.valid) }" (focusout)="checkValue(data.controls.fullname.valid)" readonly>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Middle Name(s)" id="middle-name" formControlName="middlename" [ngClass]="{'form-control': true, 'invalid': (!data.controls.middlename.valid && data.controls.middlename.touched) || (submitted && !data.controls.middlename.valid) }" (focusout)="checkValue(data.controls.middlename.valid)" readonly>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Last Name" id="last-name" formControlName="last_name" [ngClass]="{'form-control': true, 'invalid': (!data.controls.last_name.valid && data.controls.last_name.touched) || (submitted && !data.controls.last_name.valid) }" (focusout)="checkValue(data.controls.last_name.valid)" readonly>
+            </div>
+            <div class="form-group">
+              <input type="date" placeholder="Date Of Birth" id="date-of-birth" formControlName="dob" [ngClass]="{'form-control': true, 'invalid': (!data.controls.dob.valid && data.controls.dob.touched) || (submitted && !data.controls.dob.valid) }" (focusout)="checkValue(data.controls.dob.valid)" readonly>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Residential Address" id="residential-address" formControlName="residential_address" [ngClass]="{'form-control': true, 'invalid': (!data.controls.residential_address.valid && data.controls.residential_address.touched) || (submitted && !data.controls.residential_address.valid) }" (focusout)="checkValue(data.controls.residential_address.valid)" readonly>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Previous Address" id="previous-address" formControlName="previous_address" [ngClass]="{'form-control': true, 'invalid': (!data.controls.previous_address.valid && data.controls.previous_address.touched) || (submitted && !data.controls.previous_address.valid) }" (focusout)="checkValue(data.controls.previous_address.valid)" readonly>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="info">
+          <h1 class="title">Email Subscription Preferences</h1>
+        </ion-row>
+        <ion-row class="form">
+          <ion-col>
+            <div class="form-group">
+              <input type="checkbox" formControlName="newsletter"> e-Newsletter
+            </div>
+            <div class="form-group">
+              <input type="checkbox" formControlName="offers"> Offers e-mails
+            </div>
+            <div class="form-group">
+              <p>We May also send factuall emails about your credit information, Credit simple account or your  use of services from Credit Simple. You will continue to receive factual emails  for as long as you have a Credit Simple account</p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="info">
+          <h1 class="title">Login Details</h1>
+        </ion-row>
+        <ion-row class="form">
+          <ion-col>
+            <div class="form-group">
+              <label for="full-name">Current Email</label>
+              <input type="text" placeholder="Email" id="email" formControlName="email" [ngClass]="{'form-control': true, 'invalid': (!data.controls.email.valid && data.controls.email.touched) || (submitted && !data.controls.email.valid) }" (focusout)="checkValue(data.controls.email.valid)" readonly>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="info">
+          <h1 class="title">Contact Number</h1>
+        </ion-row>
+        <ion-row class="form">
+          <ion-col>
+            <div class="form-group">
+              <input type="text" placeholder="Mobile Phone Number" id="mobile_number" formControlName="mobile_number" [ngClass]="{'form-control': true, 'invalid': (!data.controls.mobile_number.valid && data.controls.mobile_number.touched) || (submitted && !data.controls.mobile_number.valid) }" (focusout)="checkValue(data.controls.mobile_number.valid)">
+            </div>
+            <div class="form-group">
+              <button type="submit" [disabled]="!isValid">Submit</button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
   </div>
   <app-footer></app-footer>
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -26,6 +27,7 @@ export class ContactUsPage implements OnInit {
   constructor(
     private supportService: SupportService,
     private helper: Helper,
+    private router: Router
   ) { 
     this.title = 'Contact Us';
 
@@ -43,6 +45,17 @@ export class ContactUsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((event) => {
+      let current_route = this.router.url.toString();
+      if (event instanceof NavigationEnd && current_route === '/contact-us') {        
+        this.initForm();
+      }
+    });
+    
+    this.initForm();
+  }
+
+  private initForm() {
     this.helper.checkLogin('logout');
   }
 

@@ -36,6 +36,18 @@ export class Helper {
     form.reset();
   }
 
+  public setStorage(id: string, value: any) {
+    this.storage.set(id, value);
+  }
+
+  public removeStorage(id: string) {
+    this.storage.remove(id);
+  }
+
+  public clearStorage() {
+    this.storage.clear();
+  }
+
   public async showAlert(header: string, subHeader: string, message: string) {
     const alert = await this.alertController.create({
       header: header,
@@ -71,7 +83,6 @@ export class Helper {
 
     this.storage.get('token').then((val) => {
       if(val !== '' && val !== null) {
-        console.log('user', val);
         isLogin = true;    
       }
     }).finally(() => {
@@ -96,7 +107,6 @@ export class Helper {
       let userGoogle = JSON.parse(val);
       if(userGoogle) {
         if(userGoogle.credential.idToken !== '') {
-          console.log('userGoogle', userGoogle);
           isLogin = true;
         }
       }
@@ -122,7 +132,6 @@ export class Helper {
       let userFacebook = JSON.parse(val);
       if(userFacebook) {
         if(userFacebook.credential.accessToken !== '') {
-          console.log('userFacebook', userFacebook);
           isLogin = true;
         }
       }

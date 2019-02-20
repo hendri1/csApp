@@ -23,42 +23,40 @@
               <ion-row>
                 <ion-col>
                   <p class="bold">Full name</p>
-                  <p>Full name</p>
+                  <p>{{ userInformation.fullname }}</p>
                 </ion-col>
                 <ion-col>
                   <p class="bold">Other name</p>
-                  <p>Other name</p>
+                  <p>{{ userInformation.othername }}</p>
                 </ion-col>
               </ion-row>
               <ion-row>
                 <ion-col>
                   <p class="bold">Date of Birth</p>
-                  <p>18/03/1973</p>
+                  <p>{{ userInformation.dob }}</p>
                 </ion-col>
                 <ion-col>
                   <p class="bold">Driver's Licence</p>
-                  <p>21568848089800</p>
+                  <p>{{ userInformation.drivers_license }}</p>
                 </ion-col>
               </ion-row>
               <ion-row>
                 <ion-col>
                   <p class="bold">Employer</p>
-                  <p>Alternative Media</p>
+                  <p>{{ userInformation.employer }}</p>
                 </ion-col>
               </ion-row>
               <ion-row>
                 <ion-col>
                   <p class="bold">Known Addresses</p>
                   <p>
-                    43 Port Hacking Rd, Caringbah QLD 2467
-                    <br>
-                    80 A Wyralla Road, Miranda QLD 2469
+                    {{ userInformation.address.address }}
                   </p>
                 </ion-col>
               </ion-row>
               <ion-row>
                 <ion-col>
-                  <p class="small">First reported: 01-08-2015 Last reported: 01-09-2017</p>
+                  <p class="small">First reported: {{ userInformation.address.first_reported }} Last reported: {{ userInformation.address.last_reported }}</p>
                 </ion-col>
               </ion-row>
             </ion-grid>

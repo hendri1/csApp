@@ -1,10 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
-import { Storage } from '@ionic/storage';
-
-import { AuthService } from '../../services/auth-service';
-import { FirebaseAuthService } from '../../services/firebase-auth-service';
 import { Helper } from '../../providers/helper';
 import { offersData } from '../../providers/globals';
 
@@ -14,7 +10,7 @@ import { OffersInterface } from './offers.interface';
   selector: 'app-offers',
   templateUrl: './offers.page.html',
   styleUrls: ['./offers.page.scss'],
-  providers: [FirebaseAuthService, AuthService, Helper],
+  providers: [Helper],
 })
 export class OffersPage implements OnInit {
 
@@ -24,13 +20,9 @@ export class OffersPage implements OnInit {
   public title: string;
   public username: string;
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
-
   constructor(
-    private authService: AuthService,
     private helper: Helper,
-    private firebaseAuthService: FirebaseAuthService,
-    private storage: Storage
+    private router: Router
   ) {
     this.menuSelected = 'offers';
     this.title = 'Offers';
@@ -39,30 +31,18 @@ export class OffersPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.get('token').then((val) => {
-      if(val !== null) {
-
+    this.router.events.subscribe((event) => {
+      let current_route = this.router.url.toString();
+      if (event instanceof NavigationEnd && current_route === '/offers') {        
+        this.initForm();
       }
     });
-
-    this.storage.get('userGoogle').then((val) => {
-      if(val !== null) {
-        let data = JSON.parse(val);
-        this.username = data.user.providerData[0].displayName;
-      }
-    });
-
-    this.storage.get('userFacebook').then((val) => {
-      if(val !== null) {
-        let data = JSON.parse(val);
-        this.username = data.user.providerData[0].displayName;
-      }
-    });
+    
+    this.initForm();
   }
 
-  public logout() {
-    this.firebaseAuthService.logout();
-    this.authService.logout();
+  private initForm() {
+    this.helper.checkLogin('logout');
   }
 
   public navigate(url: string) {

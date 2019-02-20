@@ -1,17 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { Storage } from '@ionic/storage';
+import * as moment from 'moment';
 
-import { AuthService } from '../../services/auth-service';
-import { FirebaseAuthService } from '../../services/firebase-auth-service';
+import { Subscription } from 'rxjs';
+
+import { UserService } from '../../services/user-service';
 import { Helper } from '../../providers/helper';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
-  providers: [FirebaseAuthService, AuthService, Helper],
+  providers: [Helper, UserService],
 })
 export class HistoryPage implements OnInit {
 
@@ -19,23 +21,30 @@ export class HistoryPage implements OnInit {
   public title: string;
   public username: string;
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
-
   public lineChart: Object;
   public linearGauge: Object;
 
+  private subsScore: Subscription;
+
   constructor(
-    private authService: AuthService,
     private helper: Helper,
-    private firebaseAuthService: FirebaseAuthService,
-    private storage: Storage
+    private router: Router,
+    private storage: Storage,
+    private userService: UserService
   ) {
     this.menuSelected = 'history';
     this.title = 'History';
   }
 
   ngOnInit() {
-    this.helper.checkLogin('logout');
+    this.router.events.subscribe((event) => {
+      let current_route = this.router.url.toString();
+      if (event instanceof NavigationEnd && current_route === '/history') {        
+        this.initForm();
+      }
+    });
+
+    this.initForm();
     
     this.linearGauge = {
       'chart': {
@@ -123,35 +132,72 @@ export class HistoryPage implements OnInit {
         'color': '#FFA000'
       }]
     };
+  }
+
+  private initForm() {
+    this.helper.checkLogin('logout');
 
     this.storage.get('token').then((val) => {
-      if (val !== null) {
-
+      if(val !== null) {
+        this.getScore(val);
       }
     });
 
     this.storage.get('userGoogle').then((val) => {
-      if (val !== null) {
+      if(val !== null) {
         let data = JSON.parse(val);
         this.username = data.user.providerData[0].displayName;
+        this.getScore(data.credential.idToken);
       }
     });
 
     this.storage.get('userFacebook').then((val) => {
-      if (val !== null) {
+      if(val !== null) {
         let data = JSON.parse(val);
         this.username = data.user.providerData[0].displayName;
+        this.getScore(data.credential.idToken);
       }
     });
   }
 
-  public logout() {
-    this.firebaseAuthService.logout();
-    this.authService.logout();
-  }
+  private getScore(token: string) {
+    if (this.subsScore != undefined) {
+      this.subsScore.unsubscribe();
+    }
 
-  public navigate(url: string) {
-    this.helper.navigate(url);
+    this.subsScore = this.userService.getScore(token).subscribe(
+      (result) => {
+        let lastData = result['data'].length - 1;
+        this.linearGauge['pointers']['pointer'][0]['value'] = result['data'][lastData]['score'];
+
+        let datas = [];
+        for (let index in result['data']) {
+          let data = {
+            label: '',
+            value: 0,
+            anchorBorderColor: '',
+            anchorBgColor: '',
+            color: '',
+          }
+          for (let key in result['data'][index]) {
+            if(key === 'score') {
+              data['value'] = parseInt(result['data'][index][key]);
+            } else if(key === 'timestamp') {
+              let label = moment(result['data'][index][key]).format('MMM DD');
+              data['label'] = label;
+            }
+          }
+          data['anchorBorderColor'] = '#FFA000';
+          data['anchorBgColor'] = '#FFA000';
+          data['color'] = '#FFA000';
+          datas.push(data);
+        }
+        
+        this.lineChart['data'] = datas;
+      },
+      err => {
+        console.log(err);
+    });
   }
 
 }

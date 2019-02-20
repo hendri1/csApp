@@ -45,4 +45,35 @@ export class UserService {
     }));
   }
 
+  public getDetailUser(token: string): Observable<boolean> {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer '+ token);
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    let url = ApiVariable.apiDev + '/api';
+    return this.http.get(url, options)
+    .pipe(map((response: any) => {
+      let res = response.json();
+      if (res) {
+        return res;
+      }
+    }));
+  }
+
+  public updateUser(data: any, token: string): Observable<boolean> {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer '+ token);
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+    let params = 'is_subs_news='+data['newsletter']+'&is_subs_offer='+data['offers']+'&new_phone_number='+encodeURIComponent(data['mobile_number']);
+    let url = ApiVariable.apiDev + '/api/update-user-detail';
+    return this.http.post(url, params, options)
+    .pipe(map((response: any) => {
+      let res = response.json();
+      if (res) {
+        return res;
+      }
+    }));
+  }
+
 }

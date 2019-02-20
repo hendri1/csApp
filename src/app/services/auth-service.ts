@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
-import { Storage } from '@ionic/storage';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ApiVariable } from '../providers/globals';
+import { Helper } from '../providers/helper';
 
 @Injectable()
 export class AuthService {
@@ -15,13 +14,13 @@ export class AuthService {
   constructor(
     private router: Router,
     private http: Http,
-    private storage: Storage
+    private helper: Helper
   ) {
 
   }
 
   public logout() {
-    this.storage.clear();
+    this.helper.clearStorage();
     this.router.navigateByUrl('');
   }
 
@@ -35,7 +34,7 @@ export class AuthService {
     .pipe(map((response: any) => {
       let res = response.json();
       if (res) {
-        this.storage.set('token', res['token']);
+        this.helper.setStorage('token', res['token']);
         return res;
       }
     }));
@@ -51,7 +50,7 @@ export class AuthService {
     .pipe(map((response: any) => {
       let res = response.json();
       if (res) {
-        this.storage.set('token', res['token']);
+        this.helper.setStorage('token', res['token']);
         return res;
       }
     }));

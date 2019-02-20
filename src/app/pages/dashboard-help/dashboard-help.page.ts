@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { Helper } from '../../providers/helper';
 import { dashboardHelp } from '../../providers/globals';
@@ -18,7 +19,8 @@ export class DashboardHelpPage implements OnInit {
   public data: DashboardHelpInterface;
 
   constructor(
-    private helper: Helper
+    private helper: Helper,
+    private router: Router
   ) {
     this.menuSelected = 'dashboard-help';
     this.title = 'Dashboard Help';
@@ -26,6 +28,18 @@ export class DashboardHelpPage implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((event) => {
+      let current_route = this.router.url.toString();
+      if (event instanceof NavigationEnd && current_route === '/dashboard-help') {        
+        this.initForm();
+      }
+    });
+    
+    this.initForm();
+  }
+
+  private initForm() {
+    this.helper.checkLogin('logout');
   }
 
   public navigate(url: string) {

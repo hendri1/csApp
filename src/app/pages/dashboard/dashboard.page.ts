@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Storage } from '@ionic/storage';
@@ -29,8 +28,6 @@ export class DashboardPage implements OnInit {
   public bottomLabel: string;
   public options: any;
   public lastUpdated: number;
-
-  @ViewChild('sidenav') sidenav: MatSidenav;
 
   private subsScore: Subscription;
   private subsCreditReport: Subscription;
@@ -128,7 +125,14 @@ export class DashboardPage implements OnInit {
 
     this.storage.get('token').then((val) => {
       if(val !== null) {
-        this.getCreditReport(val);
+        this.storage.get('personInfo').then((valPerson) => {
+          if(valPerson === null) {
+            this.getCreditReport(val);
+          } else {
+            this.username = valPerson['fullname'];
+          }
+        });
+
         this.getScore(val);
       }
     });
@@ -166,6 +170,7 @@ export class DashboardPage implements OnInit {
 
     this.subsCreditReport = this.userService.getCreditReport(token).subscribe(
       (result) => {
+        this.helper.setStorage('personInfo', result['data']['personInfo']);
         this.username = result['data']['personInfo']['fullname'];
       },
       err => {
@@ -180,8 +185,9 @@ export class DashboardPage implements OnInit {
 
     this.subsScore = this.userService.getScore(token).subscribe(
       (result) => {
-        this.needleValue = result['data'][0]['score'];
-        this.lastUpdated = result['data'][0]['timestamp'];
+        let lastData = result['data'].length - 1;
+        this.needleValue = result['data'][lastData]['score'];
+        this.lastUpdated = result['data'][lastData]['timestamp'];
       },
       err => {
         console.log(err);
