@@ -11,17 +11,18 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 const config = {
-  apiKey: "AIzaSyACcBADdQelcioI6rGqSg-yXt7f_ZEnR2A",
-  authDomain: "csapp-231211.firebaseapp.com",
-  databaseURL: "https://csapp-231211.firebaseio.com",
-  projectId: "csapp-231211",
-  storageBucket: "csapp-231211.appspot.com",
-  messagingSenderId: "556411616998"
+  apiKey: "AIzaSyAXe0A140BoDKWiQFUDAaFSNrkVeETN4hU",
+  authDomain: "csapp-232404.firebaseapp.com",
+  databaseURL: "https://csapp-232404.firebaseio.com",
+  projectId: "csapp-232404",
+  storageBucket: "csapp-232404.appspot.com",
+  messagingSenderId: "732132277458"
 };
 
 @NgModule({
@@ -44,6 +45,7 @@ const config = {
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
