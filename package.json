@@ -94,8 +94,9 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.732132277458-2oq379djgbbaivkpf8bduncokg7qm0gk",
-        "WEB_APPLICATION_CLIENT_ID": "732132277458-itm9q9nu9nq6ea7vc7ed4od3isdn41ol.apps.googleusercontent.com"
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.362179339793-v8jmq3c8so49itdl0jld6i42e72psg59",
+        "WEB_APPLICATION_CLIENT_ID": "362179339793-fjrgetqn7b0lji0e3rnd95ebaujddco4.apps.googleusercontent.com",
+        "PLAY_SERVICES_VERSION": "11.8.0"
       }
     },
     "platforms": [

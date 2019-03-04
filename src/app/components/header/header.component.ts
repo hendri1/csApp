@@ -55,6 +55,13 @@ export class HeaderComponent implements OnInit {
         });
       }
     });
+
+    this.storage.get('userGoogle').then((val) => {
+      if(val !== null) {
+        let data = JSON.parse(val);
+        this.username = data.user.displayName;
+      }
+    });
     
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {        

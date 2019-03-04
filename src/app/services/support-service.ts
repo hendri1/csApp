@@ -30,4 +30,19 @@ export class SupportService {
     }));
   }
 
+  public checkTokenGoogle(token: string): Observable<boolean> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+    let params = 'id_token='+encodeURIComponent(token);
+    let url = ApiVariable.apiDev + '/api/check-oauth-token';
+    return this.http.post(url, params, options)
+    .pipe(map((response: any) => {
+      let res = response.json();
+      if (res) {
+        return res;
+      }
+    }));
+  }
+
 }

@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 
 import { Subscription } from 'rxjs';
 
+import { SupportService } from '../../services/support-service';
 import { AuthService } from '../../services/auth-service';
 import { UserService } from '../../services/user-service';
 import { FirebaseAuthService } from '../../services/firebase-auth-service';
@@ -14,7 +15,7 @@ import { Helper } from '../../providers/helper';
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
-  providers: [FirebaseAuthService, AuthService, UserService, Helper],
+  providers: [FirebaseAuthService, SupportService, AuthService, UserService, Helper],
 })
 export class DashboardPage implements OnInit {
 
@@ -29,12 +30,14 @@ export class DashboardPage implements OnInit {
   public options: any;
   public lastUpdated: number;
 
+  private subsToken: Subscription;
   private subsScore: Subscription;
   private subsCreditReport: Subscription;
 
   public gaugeChart: Object;
 
   constructor(
+    private supportService: SupportService,
     private authService: AuthService,
     private firebaseAuthService: FirebaseAuthService,
     private userService: UserService,
@@ -137,11 +140,20 @@ export class DashboardPage implements OnInit {
       }
     });
 
-    this.storage.get('userGoogle').then((val) => {
-      if(val !== null) {
-        let data = JSON.parse(val);
-        this.username = data.user.providerData[0].displayName;
-        this.getScore(data.credential.idToken);
+    this.storage.get('token_google').then((val) => {
+      if(val !== null) {  
+        this.checkTokenGoogle(val);
+      } else {
+        this.storage.get('userGoogle').then((val) => {
+          if(val !== null) {
+            let data = JSON.parse(val);
+            let idToken = data.credential.idToken;
+            this.username = data.user.displayName;
+    
+            this.storage.set('token_google', idToken);
+            this.checkTokenGoogle(idToken);
+          }
+        });
       }
     });
 
@@ -161,6 +173,21 @@ export class DashboardPage implements OnInit {
 
   public navigate(url: string) {
     this.helper.navigate(url);
+  }
+
+  private checkTokenGoogle(token: string) {
+    if (this.subsToken != undefined) {
+      this.subsToken.unsubscribe();
+    }
+
+    this.subsToken = this.supportService.checkTokenGoogle(token).subscribe(
+      (result) => {
+        console.log(result['jwt_token']);
+        this.getScore(result['jwt_token']);
+      },
+      err => {
+        console.log(err);
+    });
   }
 
   private getCreditReport(token: string) {

@@ -17,12 +17,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 const config = {
-  apiKey: "AIzaSyAXe0A140BoDKWiQFUDAaFSNrkVeETN4hU",
-  authDomain: "csapp-232404.firebaseapp.com",
+  apiKey: "AIzaSyBGahPzmjm99Kuteg279Q-GfJA4bfyBqOw",
+  authDomain: "credit-spring.firebaseapp.com",
   databaseURL: "https://csapp-232404.firebaseio.com",
-  projectId: "csapp-232404",
-  storageBucket: "csapp-232404.appspot.com",
-  messagingSenderId: "732132277458"
+  projectId: "credit-spring",
+  storageBucket: "credit-spring.appspot.com",
+  messagingSenderId: "362179339793"
 };
 
 @NgModule({
