@@ -87,6 +87,6 @@
         <variable name="WEB_APPLICATION_CLIENT_ID" value="362179339793-fjrgetqn7b0lji0e3rnd95ebaujddco4.apps.googleusercontent.com" />
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
-    <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.1.4" />
 </widget>

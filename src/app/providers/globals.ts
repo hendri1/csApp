@@ -1,8 +1,3 @@
-export const ApiVariable = Object.freeze({
-  apiDev: 'https://dev.creditspring.com.au',
-  apiReal: 'https://creditspring.com.au'
-});
-
 export const menuHeader = Object.freeze({
   count: 3,
   menu: [

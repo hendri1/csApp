@@ -56,7 +56,7 @@ export class ReportsPage implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       let current_route = this.router.url.toString();
-      if (event instanceof NavigationEnd && current_route === '/reports') {        
+      if (event instanceof NavigationEnd && current_route === '/reports') {     
         this.initForm();
       }
     });

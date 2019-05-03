@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: 'https://dev.creditspring.com.au',
+  firebase: {
+    apiKey: "AIzaSyBGahPzmjm99Kuteg279Q-GfJA4bfyBqOw",
+    authDomain: "credit-spring.firebaseapp.com",
+    databaseURL: "https://csapp-232404.firebaseio.com",
+    projectId: "credit-spring",
+    storageBucket: "credit-spring.appspot.com",
+    messagingSenderId: "362179339793"
+  },
+  google_app_id: '362179339793-fjrgetqn7b0lji0e3rnd95ebaujddco4.apps.googleusercontent.com'
 };
 
 /*

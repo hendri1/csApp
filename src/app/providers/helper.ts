@@ -106,9 +106,9 @@ export class Helper {
     this.storage.get('userGoogle').then((val) => {
       let userGoogle = JSON.parse(val);
       if(userGoogle) {
-        // if(userGoogle.credential.idToken !== '') {
+        if(userGoogle.credential.idToken !== '') {
           isLogin = true;
-        // }
+        }
       }
     }).finally(() => {
       if(mode === 'login') {

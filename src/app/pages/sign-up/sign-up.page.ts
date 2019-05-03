@@ -5,13 +5,14 @@ import { Storage } from '@ionic/storage';
 
 import { Helper } from '../../providers/helper';
 import { FirebaseAuthService } from '../../services/firebase-auth-service';
+import { SupportService } from '../../services/support-service';
 import { UserInterface } from './sign-up.interface';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
   styleUrls: ['./sign-up.page.scss'],
-  providers: [Helper, FirebaseAuthService],
+  providers: [Helper, FirebaseAuthService, SupportService],
 })
 export class SignUpPage implements OnInit {
 
@@ -38,8 +39,12 @@ export class SignUpPage implements OnInit {
 
     this.helper.checkLogin('login');
 
-    this.storage.get('user').then((val) => {
-      console.log(val);
+    this.storage.get('user').then((data) => {
+      for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.user.controls[key].setValue(data[key]);
+        }
+      }
     });
   }
 

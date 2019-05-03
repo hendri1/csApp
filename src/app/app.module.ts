@@ -12,18 +12,12 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-const config = {
-  apiKey: "AIzaSyBGahPzmjm99Kuteg279Q-GfJA4bfyBqOw",
-  authDomain: "credit-spring.firebaseapp.com",
-  databaseURL: "https://csapp-232404.firebaseio.com",
-  projectId: "credit-spring",
-  storageBucket: "credit-spring.appspot.com",
-  messagingSenderId: "362179339793"
-};
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -36,7 +30,7 @@ const config = {
     HttpModule,
     IonicModule.forRoot(), 
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AppRoutingModule,
     FormsModule, 
@@ -46,6 +40,7 @@ const config = {
     StatusBar,
     SplashScreen,
     GooglePlus,
+    Facebook,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
